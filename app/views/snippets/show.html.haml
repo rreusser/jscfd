@@ -1,33 +1,7 @@
 = content_for :stylesheet_links do
   = stylesheet_link_tag 'codemirror.css'
-.header
-  .logo
-    cfd-fiddle
-  %ul.buttons#execute
-    %li.inactive init
-    %li.inactive pause
-    %li.inactive step
-    %li.inactive run
-  %ul.buttons#file
-    %li= link_to 'save', '#', :id=>'save'
-    %li.inactive load
-    %li.inactive share
-.sidebar
+= render :partial => 'header'
+= render :partial => 'sidebar'
 .content
-  #tabpane
-    .tabselect
-      %ul
-        %li.active
-          %a#function_tab_link{:href=>'#'} functions
-        %li
-          %a#init_tab_link{:href=>'#'} init
-        %li
-          %a#iteration_tab_link{:href=>'#'} iteration
-    = form_for @snippet do |f|
-      .functions.tab
-        = f.text_area :functions
-      .init.tab
-        = f.text_area :init
-      .iteration.tab
-        = f.text_area :iteration
-  .plot
+  = render :partial => 'edit', :locals=>{:snippet=>@snippet}
+  = render :partial => 'plot'

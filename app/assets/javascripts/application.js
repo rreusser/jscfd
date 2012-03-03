@@ -9,3 +9,4 @@
 //= require codemirror
 //= require mode/javascript/javascript
 //= require init
+//= require lib

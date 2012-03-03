@@ -1,4 +1,4 @@
-Jscfd::Application.routes.draw do
+CfdFiddle::Application.routes.draw do
 
   root :to=>'snippets#new'
 

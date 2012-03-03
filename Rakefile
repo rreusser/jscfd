@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Jscfd::Application.load_tasks
+CfdFiddle::Application.load_tasks

@@ -93,14 +93,13 @@ $buttonborder: #555;
 
     li {
       margin-top: -1px;
-      padding: 4px 10px 4px 10px;
+      padding: 2px 10px 2px 10px;
       float:left;
       position: relative;
       top: 1px;
       display:inline;
       font-family: 'PT Sans';
       text-shadow: #333 0px 0px 5px;
-      cursor:pointer;
 
       a {
         text-decoration: none;
@@ -130,6 +129,20 @@ $buttonborder: #555;
 
     li:active {
       $colorscale:0.5;
+      background-color: $buttoncolor2*$colorscale;
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$buttoncolor2',endColorstr='$buttoncolor1',GradientType=0);
+      background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$buttoncolor2*$colorscale), color-stop(100%,$buttoncolor1));
+      background: -moz-linear-gradient(top,$buttoncolor2*$colorscale,$buttoncolor1);
+      background-image: -o-linear-gradient($buttoncolor2*$colorscale,$buttoncolor1);
+      cursor:link;
+
+      a {
+        color: $logotext*0.8;
+      }
+    }
+
+    li.needssave {
+      $colorscale:0.7;
       background-color: $buttoncolor2*$colorscale;
       filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$buttoncolor2',endColorstr='$buttoncolor1',GradientType=0);
       background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$buttoncolor2*$colorscale), color-stop(100%,$buttoncolor1));
@@ -199,8 +212,15 @@ $sidebar_width: 200px;
   width: $sidebar_width - 1;
 }
 
-.plot {
-  //border-left: 1px solid;
+#tabpane {
+  position: absolute;
+  right: 50%;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+}
+
+#plotpane {
   position: absolute;
   right: 0px;
   left: 50%;
@@ -212,14 +232,18 @@ $tabheight: 30px;
 .tabselect {
   font-family: 'PT Sans';
   position: relative;
-  height: $tabheight;
+  height: $tabheight - 1;
   list-style-type: none;
+
+  border-bottom: 1px solid;
+  border-color: $bordercolor;
 
   ul {
     position: absolute;
     bottom: 0px;
-    border-bottom: 1px solid;
-    border-color: $bordercolor;
+    //border-bottom: 1px solid;
+    //border-color: $bordercolor;
+    padding-left: 3px;
 
     li {
       background: $lightgray*0.75;
@@ -230,12 +254,15 @@ $tabheight: 30px;
       border-left: 1px solid;
       border-color: $bordercolor;
       margin: 3px;
-      padding: 3px;
       margin-bottom: 0px;
+      padding-left: 5px;
+      padding-right: 5px;
+      padding-top: 2px;
+      padding-bottom: 0px;
       float:left;
       display: inline;
       position:relative;
-      
+        
       a {
         color: #444;
         text-decoration: none;
@@ -243,19 +270,41 @@ $tabheight: 30px;
     }
     li.active {
       background: $lightgray;
-      bottom:-1px;
+      bottom:-3px;
     }
   }
 }
 
-.tab {
+.ltab {
+  background-color: $lightgray;
+  position: absolute;
+  right:0px;
+  left: 0px;
+  top: $tabheight;
+  bottom: 0px;
+}
+
+.rtab {
   background-color: $lightgray;
   position: absolute;
   left: 0px;
-  right: 50%;
+  right: 0px;
   top: $tabheight;
   bottom: 0px;
   float: right;
+  padding-top: 10px;
+  padding-right: 10px + 1;
+  padding-bottom: 10px + 1;
 }
 
 *:focus {outline:0px none transparent;}
+
+canvas {
+  position: relative;
+  width: 200px;//100%;
+  height: 200px;//100%;
+  border: 1px solid;
+  border-color: #aaa;
+  background-color: #fff;
+  box-shadow:inset 0px 0px 2px 1px #ccc;
+}

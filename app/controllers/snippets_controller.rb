@@ -1,4 +1,5 @@
 class SnippetsController < ApplicationController
+  respond_to :html, :js
   
   def home
   end
@@ -29,6 +30,7 @@ class SnippetsController < ApplicationController
     if @snippet.update_attributes(params[:snippet])
       respond_to do |format|
         format.html { redirect_to @snippet }
+        format.js
       end
     end
   end

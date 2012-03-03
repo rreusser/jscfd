@@ -1,0 +1,17 @@
+= content_for :javascript_includes do
+  = javascript_include_tag 'plotter'
+#plotpane
+  .tabselect
+    %ul
+      %li.active
+        %a#plot_tab_link{:href=>'#'} plot
+      %li
+        %a#settings_tab_link{:href=>'#'} variables
+      %li
+        %a#settings_tab_link{:href=>'#'} settings
+  .plot.rtab
+    %canvas#canvas{:height=>200, :width=>200}
+  .variables.rtab
+    %p Variables
+  .settings.rtab
+    %p Settings

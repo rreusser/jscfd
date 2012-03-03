@@ -1,0 +1,16 @@
+#tabpane
+  .tabselect
+    %ul
+      %li.active
+        %a#function_tab_link{:href=>'#'} functions
+      %li
+        %a#init_tab_link{:href=>'#'} init
+      %li
+        %a#iteration_tab_link{:href=>'#'} iteration
+  = form_for snippet, :remote=>true do |f|
+    .functions.ltab
+      = f.text_area :functions
+    .init.ltab
+      = f.text_area :init
+    .iteration.ltab
+      = f.text_area :iteration
