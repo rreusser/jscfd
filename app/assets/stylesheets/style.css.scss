@@ -1,0 +1,261 @@
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clearfix {
+  display: inline-block;
+}
+
+html[xmlns] .clearfix {
+  display: block;
+}
+
+* html .clearfix {
+  height: 1%;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  margin: 0px;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+$header1: #d84;
+$header2: #b52;
+$darkgray: #555;
+$lightgray: #eee;
+
+$bordercolor: #555;
+$borderwidth: 1px;
+$borderrad: 12px;
+$buttoncolor2: #aaa;
+$buttoncolor1: #777;
+$buttonborder: #555;
+.header {
+  top: 0px;
+  width: 100%;
+  height: 49px;
+  border-bottom: 1px solid;
+  border-color: $darkgray;
+  margin: 0px;
+  padding: 0px;
+
+  background-color: $header1*0.5 + $header2*0.5;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$header1',endColorstr='$header2',GradientType=0);
+  background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$header1), color-stop(100%,$header2));
+  background: -moz-linear-gradient(top,$header1,$header2);
+  background-image: -o-linear-gradient($header1,$header2);
+
+  box-shadow:inset 0px 0px 15px -3px $header2*0.5;
+  
+  overflow: hidden;
+
+  $logotext: #ddd;
+  .logo {
+    float: left;
+    color: $logotext;
+    position: relative;
+    left: 15px;
+    top: 10px;
+    font-weight: normal;
+    font-family: 'PT Sans';
+    font-size: 28px;
+    text-shadow: #333 0px 0px 5px;
+  }
+
+
+  ul.buttons {
+
+
+    color: $logotext;
+    float:right;
+
+    position:relative;
+    top: 12px;
+    right: 15px;
+    border-radius: $borderrad;
+
+
+    box-shadow: -3px -3px 7px -2px $header2*0.5, 3px 3px 7px -2px $header2*1.5;
+
+    list-style-type: none;
+
+    li {
+      margin-top: -1px;
+      padding: 4px 10px 4px 10px;
+      float:left;
+      position: relative;
+      top: 1px;
+      display:inline;
+      font-family: 'PT Sans';
+      text-shadow: #333 0px 0px 5px;
+      cursor:pointer;
+
+      a {
+        text-decoration: none;
+        color: $logotext;
+      }
+
+      background-color: $buttoncolor2;
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$buttoncolor2',endColorstr='$buttoncolor1',GradientType=0);
+      background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$buttoncolor2), color-stop(100%,$buttoncolor1));
+      background: -moz-linear-gradient(top,$buttoncolor2,$buttoncolor1);
+      background-image: -o-linear-gradient($buttoncolor2,$buttoncolor1);
+    }
+
+    li:hover {
+      $colorscale:1.1;
+      background-color: $buttoncolor2*$colorscale;
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$buttoncolor2',endColorstr='$buttoncolor1',GradientType=0);
+      background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$buttoncolor2*$colorscale), color-stop(100%,$buttoncolor1));
+      background: -moz-linear-gradient(top,$buttoncolor2*$colorscale,$buttoncolor1);
+      background-image: -o-linear-gradient($buttoncolor2*$colorscale,$buttoncolor1);
+      cursor:link;
+
+      a {
+        color: $logotext*$colorscale;
+      }
+    }
+
+    li:active {
+      $colorscale:0.5;
+      background-color: $buttoncolor2*$colorscale;
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$buttoncolor2',endColorstr='$buttoncolor1',GradientType=0);
+      background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$buttoncolor2*$colorscale), color-stop(100%,$buttoncolor1));
+      background: -moz-linear-gradient(top,$buttoncolor2*$colorscale,$buttoncolor1);
+      background-image: -o-linear-gradient($buttoncolor2*$colorscale,$buttoncolor1);
+      cursor:link;
+
+      a {
+        color: $logotext*0.8;
+      }
+    }
+
+    li.inactive {
+      color: $logotext*0.25;
+    }
+    
+    li {
+      border-top: $borderwidth solid;
+      border-bottom: $borderwidth solid;
+      border-color: $bordercolor;
+    }
+    li:first-child {
+      border-radius: $borderrad 0px 0px $borderrad;
+      border-top: $borderwidth solid;
+      border-left: $borderwidth solid;
+      border-bottom: $borderwidth solid;
+      border-color: $bordercolor;
+    }
+    li:last-child {
+      border-radius: 0 $borderrad $borderrad 0;
+      border-top: $borderwidth solid;
+      border-right: $borderwidth solid;
+      border-bottom: $borderwidth solid;
+      border-color: $bordercolor;
+    }
+    li:not(:last-child) {
+      border-right: 1px solid;
+      border-color: $bordercolor;
+    }
+  }
+
+  #execute {
+  }
+  #file {
+    margin-right: 20px;
+  }
+}
+
+$sidebar_width: 200px;
+.content {
+  box-shadow:inset 4px 4px 8px -3px $lightgray*0.5;
+  background-color: $lightgray;
+  position: absolute;
+  left: $sidebar_width;
+  right: 0px;
+  top: 50px;
+  bottom: 0px;
+  border-right: 1px;
+}
+
+.sidebar {
+  position: absolute;
+  border-right: 1px solid;
+  border-color: $darkgray;
+  top: 50px;
+  bottom: 0px;
+  width: $sidebar_width - 1;
+}
+
+.plot {
+  //border-left: 1px solid;
+  position: absolute;
+  right: 0px;
+  left: 50%;
+  top: 0px;
+  bottom: 0px;
+}
+
+$tabheight: 30px;
+.tabselect {
+  font-family: 'PT Sans';
+  position: relative;
+  height: $tabheight;
+  list-style-type: none;
+
+  ul {
+    position: absolute;
+    bottom: 0px;
+    border-bottom: 1px solid;
+    border-color: $bordercolor;
+
+    li {
+      background: $lightgray*0.75;
+      box-shadow: 3px 3px 8px -3px #000;
+      border-radius: 4px 4px 0px 0px;
+      border-right: 1px solid;
+      border-top: 1px solid;
+      border-left: 1px solid;
+      border-color: $bordercolor;
+      margin: 3px;
+      padding: 3px;
+      margin-bottom: 0px;
+      float:left;
+      display: inline;
+      position:relative;
+      
+      a {
+        color: #444;
+        text-decoration: none;
+      }
+    }
+    li.active {
+      background: $lightgray;
+      bottom:-1px;
+    }
+  }
+}
+
+.tab {
+  background-color: $lightgray;
+  position: absolute;
+  left: 0px;
+  right: 50%;
+  top: $tabheight;
+  bottom: 0px;
+  float: right;
+}
+
+*:focus {outline:0px none transparent;}

@@ -1,0 +1,11 @@
+!!! 5
+%html
+  %head
+    %title Jscfd
+    = stylesheet_link_tag    "application"
+    = yield :stylesheet_links
+    = javascript_include_tag "application"
+    = yield :javascript_includes
+    = csrf_meta_tags
+  %body
+    = yield

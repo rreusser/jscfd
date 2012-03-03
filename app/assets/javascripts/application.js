@@ -6,4 +6,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require codemirror
+//= require mode/javascript/javascript
+//= require init
