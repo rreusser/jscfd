@@ -1,4 +1,4 @@
-document.variables = new Object;
+window.variables = new Object;
 
 var Var = function( name, n ) {
 
@@ -11,7 +11,9 @@ var Var = function( name, n ) {
     x[i] = 0.0;
   }
   
-  document.variables[name] = x;
+  window.variables[name] = x;
+
+  window.Plotter.register(x);
 
   return x;
 }

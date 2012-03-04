@@ -64,7 +64,7 @@ $buttonborder: #aaa;
   padding: 0px;
 
   background-color: $header1*0.5 + $header2*0.5;
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$header1',endColorstr='$header2',GradientType=0);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=$header1,endColorstr=$header2,GradientType=0);
   background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$header1), color-stop(100%,$header2));
   background: -moz-linear-gradient(top,$header1,$header2);
   background-image: -o-linear-gradient($header1,$header2);
@@ -120,7 +120,7 @@ $buttonborder: #aaa;
       }
 
       background-color: $buttoncolor2;
-      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$buttoncolor2',endColorstr='$buttoncolor1',GradientType=0);
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=$buttoncolor2,endColorstr=$buttoncolor1,GradientType=0);
       background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$buttoncolor2), color-stop(100%,$buttoncolor1));
       background: -moz-linear-gradient(top,$buttoncolor2,$buttoncolor1);
       background-image: -o-linear-gradient($buttoncolor2,$buttoncolor1);
@@ -129,7 +129,7 @@ $buttonborder: #aaa;
     li:hover {
       $colorscale:1.2;
       background-color: $buttoncolor2;
-      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$buttoncolor2',endColorstr='$buttoncolor1',GradientType=0);
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=$buttoncolor2,endColorstr=$buttoncolor1,GradientType=0);
       background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$buttoncolor2), color-stop(100%,$buttoncolor1*$colorscale));
       background: -moz-linear-gradient(top,$buttoncolor2,$buttoncolor1*$colorscale);
       background-image: -o-linear-gradient($buttoncolor2,$buttoncolor1*$colorscale);
@@ -142,7 +142,7 @@ $buttonborder: #aaa;
     li:active {
       $colorscale:0.5;
       background-color: $buttoncolor2*$colorscale;
-      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$buttoncolor2',endColorstr='$buttoncolor1',GradientType=0);
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=$buttoncolor2,endColorstr=$buttoncolor1,GradientType=0);
       background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$buttoncolor2*$colorscale), color-stop(100%,$buttoncolor1));
       background: -moz-linear-gradient(top,$buttoncolor2*$colorscale,$buttoncolor1);
       background-image: -o-linear-gradient($buttoncolor2*$colorscale,$buttoncolor1);
@@ -156,7 +156,7 @@ $buttonborder: #aaa;
       $buttoncolor3: #fff;
       $buttoncolor4: #bbb;
       background-color: $buttoncolor3;
-      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$buttoncolor3',endColorstr='$buttoncolor4',GradientType=0);
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=$buttoncolor3,endColorstr=$buttoncolor4,GradientType=0);
       background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$buttoncolor3), color-stop(100%,$buttoncolor4));
       background: -moz-linear-gradient(top,$buttoncolor3,$buttoncolor4);
       background-image: -o-linear-gradient($buttoncolor3,$buttoncolor4);
@@ -290,7 +290,7 @@ $sidebarbot: #ddd;
   border-color: #999;
 
   background-color: $sidebartop*0.5 + $sidebarbot*0.5;
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$sidebartop',endColorstr='$sidebarbot',GradientType=0);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=$sidebartop,endColorstr=$sidebarbot,GradientType=0);
   background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$sidebartop), color-stop(100%,$sidebarbot));
   background: -moz-linear-gradient(top,$sidebartop,$sidebarbot);
   background-image: -o-linear-gradient($sidebartop,$sidebarbot);
