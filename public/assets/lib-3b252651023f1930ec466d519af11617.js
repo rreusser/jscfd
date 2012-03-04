@@ -1,1 +1,0 @@
-window.variables=new Object;var Var=function(a,b){x=new Array(b),x.name=a;for(var c=0;c<b;c++)x[c]=0;return window.variables[a]=x,window.Plotter.register(x),x};
