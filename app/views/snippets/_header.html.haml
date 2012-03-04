@@ -1,12 +1,12 @@
-.header
+.header.noselect
   .logo
     cfd-tinker
   %ul.buttons#execute
     %li= link_to 'init', '#', :id=>'init'
-    %li.inactive pause
-    %li.inactive step
+    %li= link_to 'pause', '#', :id=>'pause'
+    %li= link_to 'step', '#', :id=>'step'
     %li= link_to 'run', '#', :id=>'run'
   %ul.buttons#file
     %li= link_to 'save', '#', :id=>'save'
-    %li.inactive load
-    %li.inactive share
+    %li= link_to 'load', '#', :id=>'load', :class=>"inactive"
+    %li= link_to 'share', '#', :id=>'share', :class=>"inactive"

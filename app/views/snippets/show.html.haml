@@ -2,6 +2,6 @@
   = stylesheet_link_tag 'codemirror.css'
 = render :partial => 'header'
 = render :partial => 'sidebar'
-.content
+.content.noselect
   = render :partial => 'edit', :locals=>{:snippet=>@snippet}
   = render :partial => 'plot'

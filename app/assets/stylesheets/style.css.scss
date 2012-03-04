@@ -31,17 +31,29 @@ body {
   width: 100%;
 }
 
-$header1: #d84;
-$header2: #b52;
+$header2: #47b;
+$header1: $header2*1.5;
 $darkgray: #555;
 $lightgray: #eee;
 
 $bordercolor: #555;
+$tabbordercolor: #999;
 $borderwidth: 1px;
 $borderrad: 12px;
-$buttoncolor2: #aaa;
-$buttoncolor1: #777;
-$buttonborder: #555;
+$buttoncolor2: #fff;
+$buttoncolor1: #888;
+$buttonborder: #aaa;
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: normal;
+}
+
 .header {
   top: 0px;
   width: 100%;
@@ -57,7 +69,7 @@ $buttonborder: #555;
   background: -moz-linear-gradient(top,$header1,$header2);
   background-image: -o-linear-gradient($header1,$header2);
 
-  box-shadow:inset 0px 0px 15px -3px $header2*0.5;
+  box-shadow:inset 0px 0px 2px 0px $header2*0.5;
   
   overflow: hidden;
 
@@ -68,8 +80,8 @@ $buttonborder: #555;
     position: relative;
     left: 15px;
     top: 10px;
-    font-weight: normal;
     font-family: 'PT Sans';
+    font-weight: 500;
     font-size: 28px;
     text-shadow: #333 0px 0px 5px;
   }
@@ -87,11 +99,12 @@ $buttonborder: #555;
     border-radius: $borderrad;
 
 
-    box-shadow: -3px -3px 7px -2px $header2*0.5, 3px 3px 7px -2px $header2*1.5;
+    box-shadow: -1px -1px 1px 0px $header2*0.5, 1px 1px 1px 0px $header2*2.0;
 
     list-style-type: none;
 
     li {
+      cursor:pointer;
       margin-top: -1px;
       padding: 2px 10px 2px 10px;
       float:left;
@@ -99,11 +112,11 @@ $buttonborder: #555;
       top: 1px;
       display:inline;
       font-family: 'PT Sans';
-      text-shadow: #333 0px 0px 5px;
+      text-shadow: #fff 0px 0px 5px;
 
       a {
         text-decoration: none;
-        color: $logotext;
+        color: $logotext*0.2;
       }
 
       background-color: $buttoncolor2;
@@ -114,16 +127,15 @@ $buttonborder: #555;
     }
 
     li:hover {
-      $colorscale:1.1;
-      background-color: $buttoncolor2*$colorscale;
+      $colorscale:1.2;
+      background-color: $buttoncolor2;
       filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$buttoncolor2',endColorstr='$buttoncolor1',GradientType=0);
-      background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$buttoncolor2*$colorscale), color-stop(100%,$buttoncolor1));
-      background: -moz-linear-gradient(top,$buttoncolor2*$colorscale,$buttoncolor1);
-      background-image: -o-linear-gradient($buttoncolor2*$colorscale,$buttoncolor1);
-      cursor:link;
+      background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$buttoncolor2), color-stop(100%,$buttoncolor1*$colorscale));
+      background: -moz-linear-gradient(top,$buttoncolor2,$buttoncolor1*$colorscale);
+      background-image: -o-linear-gradient($buttoncolor2,$buttoncolor1*$colorscale);
 
       a {
-        color: $logotext*$colorscale;
+        color: $logotext*0.4;
       }
     }
 
@@ -134,29 +146,30 @@ $buttonborder: #555;
       background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$buttoncolor2*$colorscale), color-stop(100%,$buttoncolor1));
       background: -moz-linear-gradient(top,$buttoncolor2*$colorscale,$buttoncolor1);
       background-image: -o-linear-gradient($buttoncolor2*$colorscale,$buttoncolor1);
-      cursor:link;
 
       a {
-        color: $logotext*0.8;
+        color: $logotext*1.0;
       }
     }
 
     li.needssave {
-      $colorscale:0.7;
-      background-color: $buttoncolor2*$colorscale;
-      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$buttoncolor2',endColorstr='$buttoncolor1',GradientType=0);
-      background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$buttoncolor2*$colorscale), color-stop(100%,$buttoncolor1));
-      background: -moz-linear-gradient(top,$buttoncolor2*$colorscale,$buttoncolor1);
-      background-image: -o-linear-gradient($buttoncolor2*$colorscale,$buttoncolor1);
-      cursor:link;
+      $buttoncolor3: #fff;
+      $buttoncolor4: #bbb;
+      background-color: $buttoncolor3;
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$buttoncolor3',endColorstr='$buttoncolor4',GradientType=0);
+      background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$buttoncolor3), color-stop(100%,$buttoncolor4));
+      background: -moz-linear-gradient(top,$buttoncolor3,$buttoncolor4);
+      background-image: -o-linear-gradient($buttoncolor3,$buttoncolor4);
 
       a {
-        color: $logotext*0.8;
+        color: $logotext*0.2;
+        text-shadow: #f88 0px 0px 3px;
       }
     }
 
-    li.inactive {
-      color: $logotext*0.25;
+    li a.inactive {
+      color: $logotext*0.7;
+      text-shadow: #aaa 0px 0px 5px;
     }
     
     li {
@@ -178,10 +191,10 @@ $buttonborder: #555;
       border-bottom: $borderwidth solid;
       border-color: $bordercolor;
     }
-    li:not(:last-child) {
-      border-right: 1px solid;
-      border-color: $bordercolor;
-    }
+    li { box-shadow:inset -1px -1px 1px -1px #444, inset 1px 1px 1px -1px #fff; }
+    //li:not(:first-child):not(:last-child) { box-shadow:inset -2px 0 0 0 #f00, inset 2px 0 0 0 #0f0; }
+    //li:first-child { box-shadow:inset -2px 0 0 0 #f00; }
+    //li:last-child { box-shadow:inset 2px 0 0 0 #0f0; }
   }
 
   #execute {
@@ -201,6 +214,7 @@ $sidebar_width: 200px;
   top: 50px;
   bottom: 0px;
   border-right: 1px;
+  min-width: 440px;
 }
 
 .sidebar {
@@ -210,7 +224,90 @@ $sidebar_width: 200px;
   top: 50px;
   bottom: 0px;
   width: $sidebar_width - 1;
+
+  font-family: 'PT Sans';
+  overflow: scroll;
 }
+
+$sidebartop: #eee;
+$sidebarbot: #ddd;
+
+.sidebar {
+  position: absolute;
+
+  .search {
+    background-color: $lightgray;
+    height: 33px;
+    border-bottom: 1px solid;
+    border-color: #999;
+    
+    input {
+      border: 1px solid;
+      border-color: $tabbordercolor;
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: 7px;
+      height: 17px;
+      line-height: 20px;
+      border-radius: 9px;
+      box-shadow:inset 1px 1px 2px 0px #aaa;
+      font-family: 'PT Sans';
+      font-size: 13px;
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      margin: 0px;
+    }
+  }
+}
+.sidebar {
+  overflow: hidden;
+}
+.sidebar > ul {
+  color: #000;
+  line-height: 20px;
+  font-size: 13px;
+}
+
+.sidebar p {
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.sidebar {
+  box-shadow:inset 4px 4px 8px -3px $lightgray*0.5;
+  background-color: $lightgray;
+}
+.sidebar > ul {
+  width: 100%;
+  box-shadow: 4px 4px 8px -3px $lightgray*0.5;
+}
+.sidebar > ul > li {
+  cursor: pointer;
+  border-bottom: 1px solid;
+  border-color: #999;
+
+  background-color: $sidebartop*0.5 + $sidebarbot*0.5;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$sidebartop',endColorstr='$sidebarbot',GradientType=0);
+  background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,$sidebartop), color-stop(100%,$sidebarbot));
+  background: -moz-linear-gradient(top,$sidebartop,$sidebarbot);
+  background-image: -o-linear-gradient($sidebartop,$sidebarbot);
+
+  box-shadow:inset -1px -1px 0px 0px #ccc;
+}
+
+.sidebar ul li ul {
+  list-style-type: none;
+  li {
+    box-shadow:inset 1px 1px 0px 0px #eee, -1px -1px 2px 0px #aaa;
+    //border-top: 1px solid;
+    //border-color: #fff;
+    padding-left: 15px;
+  }
+}
+
 
 #tabpane {
   position: absolute;
@@ -219,6 +316,7 @@ $sidebar_width: 200px;
   top: 0px;
   bottom: 0px;
 }
+
 
 #plotpane {
   position: absolute;
@@ -236,23 +334,25 @@ $tabheight: 30px;
   list-style-type: none;
 
   border-bottom: 1px solid;
-  border-color: $bordercolor;
+  border-color: $tabbordercolor;
 
   ul {
     position: absolute;
     bottom: 0px;
     //border-bottom: 1px solid;
-    //border-color: $bordercolor;
-    padding-left: 3px;
+    //border-color: $tabbordercolor;
+    padding-left: 7px;
 
     li {
-      background: $lightgray*0.75;
-      box-shadow: 3px 3px 8px -3px #000;
+      cursor: pointer;
+      font-family: 'PT Sans';
+      font-size: 13px;
+      background: $lightgray*0.9;
       border-radius: 4px 4px 0px 0px;
       border-right: 1px solid;
       border-top: 1px solid;
       border-left: 1px solid;
-      border-color: $bordercolor;
+      border-color: $tabbordercolor;
       margin: 3px;
       margin-bottom: 0px;
       padding-left: 5px;
@@ -262,6 +362,10 @@ $tabheight: 30px;
       float:left;
       display: inline;
       position:relative;
+      height: 15px;
+      bottom: -3px;
+
+      box-shadow:inset 1px 1px 0px 0px #ddd, 3px 3px 8px -3px #555;
         
       a {
         color: #444;
@@ -269,8 +373,10 @@ $tabheight: 30px;
       }
     }
     li.active {
+      height: 18px;
+      box-shadow:inset 1px 1px 0px 0px #fff, 3px 3px 8px -3px #555;
       background: $lightgray;
-      bottom:-3px;
+      bottom:-1px;
     }
   }
 }
@@ -287,7 +393,7 @@ $tabheight: 30px;
 .rtab {
   background-color: $lightgray;
   position: absolute;
-  left: 0px;
+  left: 10px;
   right: 0px;
   top: $tabheight;
   bottom: 0px;

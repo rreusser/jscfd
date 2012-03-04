@@ -37,6 +37,11 @@ $(document).ready () ->
     $('#plotpane .tabselect li').removeClass('active')
     $(this).addClass('active')
 
+  $('.sidebar').on 'click','ul li', () ->
+    $(this).children().not(':first-child').toggle(100)
+
+  $('.sidebar ul li').children().not(':first-child').toggle()
+
   save = () ->
     write_to_text_areas()
     $('#save').parent().removeClass('needssave')
@@ -45,6 +50,10 @@ $(document).ready () ->
   
   $('#save').click () ->
     save()
+
+  #$(".sidebar").bind "mousewheel", (ev, delta) ->
+    #scrollTop = $(this).scrollTop()
+    #$(this).scrollTop(scrollTop-Math.round(delta))
 
   write_to_text_areas = () ->
     document.myCodeMirror[e].save() for e in editors
@@ -56,6 +65,9 @@ $(document).ready () ->
     write_to_text_areas()
     execute $('.iteration textarea')[0].value
 
+  step = () ->
+    write_to_text_areas()
+    execute $('.iteration textarea')[0].value
 
   init = () ->
     write_to_text_areas()

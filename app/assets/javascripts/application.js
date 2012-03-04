@@ -10,3 +10,4 @@
 //= require mode/javascript/javascript
 //= require init
 //= require lib
+//= require jquery.mousewheel
