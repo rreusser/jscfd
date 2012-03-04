@@ -43,6 +43,12 @@ module CfdFiddle
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
+    config.assets.precompile = [/^[a-zA-Z]*\..*/]
+    config.assets.precompile += ['*.js']
+    config.assets.precompile += %w[*.ttf *.woff *.svg *.eot]
+
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+
     config.assets.version = '1.0'
   end
 end
