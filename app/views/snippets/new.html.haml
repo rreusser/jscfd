@@ -3,5 +3,5 @@
 = render :partial => 'header'
 = render :partial => 'sidebar'
 .content
-  = render :partial => 'new', :locals=>{:snippet=>@snippet}
+  = render :partial => 'edit', :locals=>{:snippet=>@snippet, :is_remote=>false}
   = render :partial => 'plot'

@@ -1,4 +1,10 @@
 $(document).ready () ->
+
+  $('.header').noisy({intensity:0.3})
+  $('.sidebar').noisy()
+  $('.tabselect').noisy()
+
+
   @myCodeMirror = new Object
   editors = ['snippet_functions','snippet_init','snippet_iteration']
   for editor in editors

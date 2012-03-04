@@ -11,3 +11,4 @@
 //= require init
 //= require lib
 //= require jquery.mousewheel
+//= require jquery.noisy.min

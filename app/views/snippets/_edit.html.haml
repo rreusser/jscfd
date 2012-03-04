@@ -7,7 +7,7 @@
         %a#init_tab_link{:href=>'#'} init
       %li
         %a#iteration_tab_link{:href=>'#'} iteration
-  = form_for snippet, :remote=>true do |f|
+  = form_for snippet, :remote=>is_remote do |f|
     .functions.ltab
       = f.text_area :functions
     .init.ltab
