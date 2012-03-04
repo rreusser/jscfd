@@ -85,19 +85,20 @@ $(document).ready () ->
         )
       
   window.pause = () =>
-    console.log('Pausing')
-    window.running = false
-    $('#init').removeClass('inactive')
+    if( window.running == true )
+      console.log('Pausing')
+      window.running = false
+      $('#init').removeClass('inactive')
 
 
   window.step = () =>
     if window.initialized==true
       $('#init').removeClass('inactive')
+      console.log('Steppping')
       if(window.running==true)
         window.running = false
       else
         write_to_text_areas()
-        console.log('Steppping')
         execute $('.iteration textarea')[0].value
         window.Plotter.draw()
 
@@ -106,8 +107,7 @@ $(document).ready () ->
       $('#run').removeClass('inactive')
       $('#pause').removeClass('inactive')
       $('#step').removeClass('inactive')
-      window.Plotter.plotvarnames = []
-      window.Plotter.plotvars = []
+      window.Plotter.plotvars = {}
       write_to_text_areas()
       console.log('Initializing')
       execute $('.functions textarea')[0].value
@@ -131,10 +131,12 @@ $(document).ready () ->
   $('#step').addClass('inactive')
 
   runbutton = () ->
-    if( window.running==false )
-      $('#init').addClass('inactive')
-      window.running = true
-      window.run()
+    if( window.initialized==true )
+      if( window.running==false )
+        console.log('Running...')
+        $('#init').addClass('inactive')
+        window.running = true
+        window.run()
 
   $('#run').parent().on('click','',() -> runbutton())
 

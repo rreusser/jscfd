@@ -18,7 +18,7 @@ class Axis
     @jmax = Math.min(j1,j2)
 
   draw: =>
-    @ctx.lineStyle = "#000000"
+    @ctx.strokeStyle = "#000000"
     @ctx.lineWidth=1
     @ctx.beginPath()
     @ctx.moveTo @imin,@jmax-10
@@ -43,6 +43,8 @@ class Axis
     @draw_xtics()
     @draw_ytics()
 
+    @draw_time()
+
   pos: (x,y) =>
     i = @imin + x/(@xmax-@xmin)*(@imax-@imin)
     j = @jmin + y/(@ymax-@ymin)*(@jmax-@jmin)
@@ -59,30 +61,49 @@ class Axis
     result*floor
 
   draw_xtics: =>
-    @ctx.lineStyle = "#000000"
+    @ctx.strokeStyle = "#000000"
     xspacing = @onetwofive((@xmax-@xmin)/((@imax-@imin) / 50))
     x=@xmin+xspacing
     i=1
     while x<@xmax+xspacing/2
+      # Grid lines
+      @ctx.strokeStyle = "#dddddd"
+      @line x, @ymin, x, @ymax
+
+      # Tics
+      p1 = @pos(x,@ymin)
       @ctx.beginPath()
-      pos = @pos(x,@ymin)
-      @ctx.moveTo pos[0], pos[1]
-      @ctx.lineTo pos[0], pos[1]-10
+      @ctx.strokeStyle = "#000000"
+      @ctx.moveTo p1[0], p1[1]
+      @ctx.lineTo p1[0], p1[1]-7
       @ctx.stroke()
+
+      # Labels
+      @ctx.font = "15px sans-serif"
+      @ctx.fillText "#{x.toFixed(2)}", p1[0]-15, p1[1]+20
       i++
       x=@xmin+xspacing*i
 
   draw_ytics: =>
-    @ctx.lineStyle = "#000000"
     yspacing = @onetwofive((@ymax-@ymin)/((@jmin-@jmax) / 50))
     y=@ymin+yspacing
     i=1
     while y<@ymax+yspacing/2
+      # Grid lines
+      @ctx.strokeStyle = "#dddddd"
+      @line @xmin, y, @xmax, y
+
+      # Tics
+      p1 = @pos(@xmin,y)
+      @ctx.strokeStyle = "#000000"
       @ctx.beginPath()
-      pos = @pos(@xmin,y)
-      @ctx.moveTo pos[0], pos[1]
-      @ctx.lineTo pos[0]+10, pos[1]
+      @ctx.moveTo p1[0], p1[1]
+      @ctx.lineTo p1[0]+7, p1[1]
       @ctx.stroke()
+      
+      # Labels
+      @ctx.font = "15px sans-serif"
+      @ctx.fillText "#{y.toFixed(2)}", p1[0]-30, p1[1]+7
       i++
       y=@ymin+yspacing*i
 
@@ -97,6 +118,13 @@ class Axis
 
   lineTo: (xy) =>
     @ctx.lineTo xy[0], xy[1]
+
+  draw_time: () =>
+    if window.t
+      @ctx.font = "15px sans-serif"
+      @ctx.fillText "t = #{window.t.toExponential(3)}", @imax-55, @jmax-15
+    
+
     
   line: (x1,y1,x2,y2) =>
     @ctx.beginPath()
@@ -110,13 +138,18 @@ class Axis
     if x.length != y.length
       console.error('Polyline must have same number of points in x and y')
     else
-      @ctx.lineStyle = "#000000"
+      @ctx.strokeStyle = "#000000"
       @ctx.beginPath()
       @moveTo @pos(x[0],y[0])
       for i in [1...x.length]
         @lineTo @pos(x[i],y[i])
       @ctx.stroke()
-        
+
+      for i in [0...x.length]
+        @ctx.beginPath()
+        p = @pos(x[i],y[i])
+        @ctx.arc(p[0],p[1],2,0,2*Math.PI,true)
+        @ctx.fill()
 
 
 
@@ -126,22 +159,19 @@ class Plotter
     @canvas = document.getElementById(id)
     @jcanvas = $('#'+@id)
     @ctx = @canvas.getContext('2d')
-    @set_padding(30)
+    @set_padding(35)
     @resize()
-    @plotvars = []
-    @plotvarnames = []
+    @plotvars = {}
+
 
   register: (x) =>
-    console.log x.name
-    console.log @plotvarnames
-    if x.name not in @plotvarnames
-      @plotvars.push(x)
-      @plotvarnames.push(x.name)
+    @plotvars[x.name] = x
 
   draw: =>
     @ctx.clearRect(0,0,@width,@height)
     @axis.draw()
-    @axis.plot(v) for v in @plotvars
+    for k,v of @plotvars
+      @axis.plot(v)
 
   set_padding: (@padding) =>
 
